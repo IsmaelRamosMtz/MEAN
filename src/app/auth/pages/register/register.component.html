@@ -1,1 +1,64 @@
-<p>register works!</p>
+<form [formGroup]="registroFormulario" (ngSubmit)="registrarUsuario()" class="login100-form" autocomplete="off">
+
+    <span class="login100-form-title p-b-49">
+        Crear cuenta
+    </span>
+
+    <div class="wrap-input100 m-b-23">
+        <span class="label-input100">Nombre</span>
+        <input class="input100" type="nombre" formControlName="name" placeholder="Ingrese su nombre">
+        <span class="focus-input100"></span>
+        <span class="" *ngIf="campoNoValido('name')">
+            Ingrese su nombre
+        </span>
+    </div>
+
+
+    <div class="wrap-input100 m-b-23">
+        <span class="label-input100">Email</span>
+        <input class="input100" type="email" formControlName="email" placeholder="Ingrese su email">
+        <span class="focus-input100"></span>
+        <span class="" *ngIf="campoNoValido('email')">
+            Formato de email incorrecto
+        </span>
+    </div>
+
+    <div class="wrap-input100 m-b-23">
+        <span class="label-input100">Password</span>
+        <input class="input100" type="password" formControlName="password" placeholder="Ingrese su contraseña">
+        <span class="focus-input100"></span>
+        <span class="form-text text-danger" *ngIf="campoNoValido('password')">
+            El password debe ser mayor a 6
+        </span>
+    </div>
+
+    <div class="wrap-input100 m-b-23">
+        <span class="label-input100">Confirmar Password</span>
+        <input class="input100" type="password" formControlName="confirmPassword" placeholder="Repita su contraseña">
+        <span class="focus-input100"></span>
+        <span class="form-text text-danger" *ngIf="campoNoValido('confirmPassword')">
+            Las contraseñas deben de ser iguales
+        </span>
+    </div>
+
+    <div class="text-right p-t-8 p-b-31"></div>
+
+    <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button class="login100-form-btn" type="submit" [disabled]="registroFormulario.invalid">
+                Registrarme
+            </button>
+        </div>
+    </div>
+
+    <div class="flex-col-c p-t-60">
+        <span class="txt1 p-b-17">
+            ¿Ya tienes cuenta?
+        </span>
+
+        <a routerLink="/auth/login" class="txt2">
+            Ingresa aqui
+        </a>
+    </div>
+</form>
