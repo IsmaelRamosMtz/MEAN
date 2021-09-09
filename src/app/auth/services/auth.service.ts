@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Usuario } from '../interfaces/Usuario';
 import { AuthResponse } from '../interfaces/AuthResponse';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class AuthService {
   }
 
   constructor(
+    private router: Router,
     private http: HttpClient
   ) { }
 
@@ -57,17 +59,16 @@ export class AuthService {
     )
   }
 
-  verificarSesion() {
-    if (localStorage.getItem('token') != '') {
-      // this.router.navigateByUrl('/rutaindicada')
-      console.log('Usuario logueado');
-    } else {
-      console.log('Usuario no logueado');
-      // this.router.navigateByUrl('/auth/login')
-    }
-  }
+  // verificarSesion() {
+  //   if (localStorage.getItem('token') != '') {
+  //     this.router.navigateByUrl('/heroes/home')
+  //   } else {
+  //     this.router.navigateByUrl('/auth/login')
+  //   }
+  // }
 
   logout() {
+    this.router.navigateByUrl('/auth/login')
     localStorage.clear();
   }
 }

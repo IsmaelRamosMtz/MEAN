@@ -32,7 +32,6 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.authService.verificarSesion();
   }
 
   campoNoValido(campo: string) {
