@@ -33,11 +33,10 @@ export class LoginComponent implements OnInit {
     .subscribe( ok => {
       console.log(ok)
       if(ok === true){
-        console.log('LOGUEADO:3');
+        this.router.navigateByUrl('/heroes/home')
       } else {
         Swal.fire('Error', ok, 'error');
       }
     })
   }
-
 }
