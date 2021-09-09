@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
     this.authService.registrarUsuario(name, email, password)
     .subscribe(ok => {
       if(ok === true){
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/heroes/homes');
       } else {
         Swal.fire('Error', ok, 'error')
       }

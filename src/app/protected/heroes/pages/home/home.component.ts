@@ -10,6 +10,9 @@ import { AuthService } from '../../../../auth/services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
+  get usuario() {
+    return this.authService.usuario;
+  }
   constructor(
     private router: Router,
     private authService: AuthService
