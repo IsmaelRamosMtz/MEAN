@@ -88,16 +88,17 @@ export class AuthService {
     )
   }
 
-  // verificarSesion() {
-  //   if (localStorage.getItem('token') != '') {
-  //     this.router.navigateByUrl('/heroes/home')
-  //   } else {
-  //     this.router.navigateByUrl('/auth/login')
-  //   }
-  // }
-
+  
   logout() {
     this.router.navigateByUrl('/auth/login')
     localStorage.clear();
+  }
+
+  verificarSesion() {
+    if(localStorage.getItem('token')!= ''){
+      this.router.navigateByUrl('/heroes/listado')
+    } else {
+      this.router.navigateByUrl('/auth/');
+    }
   }
 }

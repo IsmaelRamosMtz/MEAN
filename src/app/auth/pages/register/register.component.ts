@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.authService.verificarSesion();
   }
 
   campoNoValido(campo: string) {
@@ -47,7 +48,7 @@ export class RegisterComponent implements OnInit {
     this.authService.registrarUsuario(name, email, password)
     .subscribe(ok => {
       if(ok === true){
-        this.router.navigateByUrl('/heroes/homes');
+        this.router.navigateByUrl('/heroes/listado');
       } else {
         Swal.fire('Error', ok, 'error')
       }

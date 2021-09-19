@@ -1,1 +1,27 @@
-<p>buscar works!</p>
+<div fxLayout="column">
+  <div>
+    <h1>Buscador de Heroes</h1>
+    <mat-divider></mat-divider>
+  </div>
+
+  <div [formGroup]="buscadorForm" fxLayout="column">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Buscador</mat-label>
+      <input type="text" formControlName="buscadorHeroesCtrl" matInput [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let heroe of filteredHeroes | async" [value]="heroe.superHero" (click)="obtenerInfoHeroe(heroe)">
+              {{heroe.superHero}}
+          </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  
+  <div>
+      <p *ngIf="heroeSeleccionado">Info en vista de json</p>
+      <pre> {{ heroeSeleccionado | json }}</pre>
+    </div>
+
+    <div *ngIf=heroeSeleccionado>
+      <app-heroe-tarjeta [heroe]="heroeSeleccionado"></app-heroe-tarjeta>
+    </div>
+</div>
